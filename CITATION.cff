@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: article
+title: "Credible science is reproducible science"
+authors:
+  - family-names: Roggenkamp
+    given-names: Hauke
+    affiliation: "University of St.Gallen, Institute of Behavioral Science and Technology"
+  - family-names: Reiss
+    given-names: "Michael V."
+    affiliation: "Leibniz Institute for Media Research, Hans-Bredow-Institut; Ludwig-Maximilians-Universität München, Institute for Communication Science and Media Research"
+  - family-names: Adler
+    given-names: Susanne
+    affiliation: "Ludwig-Maximilians-Universität München, Institute for Market-based Management"
+  - family-names: Feuerriegel
+    given-names: Stefan
+    affiliation: "Ludwig-Maximilians-Universität München, Institute of Artificial Intelligence in Management"
+  - family-names: Pröllochs
+    given-names: Nicolas
+    affiliation: "University of Giessen, Department of Business and Economics"
+  - family-names: Robertson
+    given-names: Claire
+    affiliation: "Colby College, Extremism and Polarization Lab"
+  - family-names: Holzmeister
+    given-names: Felix
+    affiliation: "University of Innsbruck, Department of Economics"
+date-released: 2025-11-13
+license: CC-BY-4.0
+repository-code: "https://github.com/Howquez/reproducibility-comment"
