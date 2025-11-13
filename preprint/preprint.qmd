@@ -1,0 +1,233 @@
+---
+title: "Credible science is reproducible science"
+# subtitle: Optional Subtitle
+# running-head: Beyond Words
+author:
+  - name: Hauke Roggenkamp
+    email: hauke.roggenkamp@unisg.ch
+    orcid: 0009-0005-5176-4718
+    affiliation:
+      - ref: 1
+  - name: Michael V. Reiss
+    orcid: 0000-0002-6094-9985
+    affiliation:
+      - ref: 2
+      - ref: 3
+  - name: Susanne Adler
+    orcid: 0000-0002-3211-6871
+    affiliation:
+      - ref: 4
+  - name: Stefan Feuerriegel
+    orcid: 0000-0001-7856-8729
+    affiliation:
+      - ref: 5
+  - name: Nicolas Pröllochs
+    orcid: 0000-0002-1835-7302
+    affiliation:
+      - ref: 6
+  - name: Claire Robertson
+    orcid: 0000-0001-8403-6358
+    affiliation:
+      - ref: 7
+  - name: Felix Holzmeister
+    orcid: 0000-0001-9606-0427
+    affiliation:
+      - ref: 8
+affiliations:
+  - id: 1
+    name: University of St.Gallen
+    department: Institute of Behavioral Science and Technology
+  - id: 2
+    name: Leibniz Institute for Media Research
+    department: Hans-Bredow-Institut
+  - id: 3
+    name: Ludwig-Maximilians-Universität München
+    department: Institute for Communication Science and Media Research
+  - id: 4
+    name: Ludwig-Maximilians-Universität München
+    department: Institute for Market-based Management
+  - id: 5
+    name: Ludwig-Maximilians-Universität München
+    department: Institute of Artificial Intelligence in Management
+  - id: 6
+    name: University of Giessen
+    department: Department of Business and Economics
+  - id: 7
+    name: Colby College 
+    department: Extremism and Polarization Lab
+  - id: 8
+    name: University of Innsbruck
+    department: Department of Economics
+  # - id: 9 
+  #   name: ETH Zurich
+  #   department: Department of Management, Technology, and Economics
+  
+# abstract: |
+# categories: [reproducibility]
+# authornote: |
+date: last-modified
+bibliography: ../literature/_references.bib
+format:
+  preprint-typst:
+    execute:      
+      echo: false      
+      warning: false 
+    linkcolor: "blue"
+    link-citations: true
+    wordcount: true
+    citeproc: true
+    # Common options - uncomment to use
+    theme: jou                   # Journal theme (2-column)
+    # line-number: true            # Line numbering
+    fontsize: 11pt               # Font size
+    leading: 0.6em               # Line spacing
+---
+
+```{=typst}
+#set par(first-line-indent: 0em)
+```
+
+Reproducibility should be the easiest promise science keeps. When researchers share their data and code, others should be able to regenerate the reported results. This is not a high bar; it simply asks that the numbers in a paper come from the analysis described. Yet, we too often fail to meet even this minimal standard [@TrisovicEtAl_2022] such that doubts emerge: if we cannot regenerate the reported numbers from the shared materials, something is wrong, and in the worst case, that something might be the results themselves.
+
+```{=typst}
+#set par(first-line-indent: 1em)  // Reset to normal
+```
+
+
+# Levels of credibility
+
+Transparency provides the foundation for reproducibility. When researchers share their code and data, others can verify results and advance scientific knowledge production [@Hussey_2025]. Without this foundation (depicted as G in @fig-blocks), verification requires a leap of faith, and the integrity of the scientific process may suffer [@MunafoEtAl_2017]. We cannot build robust, credible findings on materials we cannot examine.
+
+Verifiability takes different forms [@DreberJohannesson_2024; @BrodeurEtAl_2024]. _Computational reproducibility_ (blue brick in Level 1) means that anyone who runs the authors' code on their data obtains the exact numerical values reported. This minimal requirement verifies whether the code maps to the reported results.
+
+_Recreate reproducibility_ (gray L-shaped brick in Level 1) demands more. It asks whether independent researchers could obtain identical results by recreating the analysis based solely on the authors' data and reported methods, without consulting the original code. This tests whether reported methods actually produce the results [@Stark_2018], which matters because peer review typically examines what authors say they did, not what their code actually does.
+
+:::: {.place arguments='top, float: true'}
+
+![A pragmatic hierarchy for verifying research findings. Description follows.](_img/display-item-lego.png){#fig-blocks}
+
+::::
+
+These two forms of reproducibility should align but sometimes diverge. A project may pass computational reproducibility (the code runs and yields the reported numbers) yet fail recreate reproducibility (the methods description does not match what the code actually does). This divergence signals a problem: either the code contains errors that happen to produce the reported results, or the written methods misrepresent the actual analysis.
+
+Only when both computational and recreate reproducibility are established does it make sense to invest in more demanding forms of verification. _Robustness reproducibility_ tests whether results hold under alternative reasonable analytical decisions on the same data. _Replicability_ requires the most resources, as it tests whether findings hold with new data, though for many studies replication proves prohibitively expensive or impossible (consider historical events or rare observational opportunities). 
+
+Each level adds credibility, and researchers can conduct multiple robustness tests or replications to further strengthen confidence. Without the foundational layers, however, higher-order questions about robustness or generalizability remain premature.
+
+<!-- These foundational requirements appear straightforward: share data and code so others can verify results. Yet the field consistently fails to meet even these minimal standards. @Hussey_2025 tested compliance with data availability statements in articles that used the Implicit Relational Assessment Procedure and found that "data is generally not available upon request." Even when researchers do share data, the accompanying code more often fails to execute than runs successfully [@TrisovicEtAl_2022]. -->
+
+# Three barriers to reproducibility
+
+Large-scale studies reveal the extent of reproducibility problems. When researchers attempted to execute over 9,000 R files from publicly available replication datasets, 74% failed to complete without error [@TrisovicEtAl_2022]. Such failures likely reflect three intertwined obstacles: the curse of expertise [@Hinds_1999], technological barriers, and misaligned incentives.
+
+Original authors possess deep domain knowledge about their methods and data, which leads them to underestimate what others need to reproduce their work. What seems obvious to experts requires explicit documentation for others: authors may believe they have provided sufficient information when critical details remain implicit, undocumented, or buried in their tacit knowledge.
+
+Technological barriers compound the problem. Hard-coded file paths work only on the original computer, software versions and package dependencies go undocumented, manual operations remain unrecorded, and analyses scatter across multiple software environments without clear sequencing. Even in computationally light projects, rapidly evolving software environments, complex dependency chains, and inconsistent standards make verification difficult [@Epskamp_2019].
+
+These barriers persist not because they are technically insurmountable, but because addressing them conflicts with how research is practiced and rewarded. Researchers operate under time constraints where publication speed often determines career advancement, making the (upfront) investment in reproducible workflows seem like a luxury they cannot afford. This perception is reinforced by institutional evaluation systems as well as the absence of reproducibility training in most graduate programs. This creates a vicious cycle where perceived time constraints prevent researchers from adopting workflows that would ultimately save time through reduced debugging, easier revisions, and less backwards engineering. Hence, the perceived trade-off between efficiency and reproducibility may be short-sighted and misleading. 
+<!-- [incorporate or transition to:.]{style="background-color:yellow"} -->
+<!-- Incremental steps matter: even partial adoption of reproducible workflows yields benefits, both for individual researchers and for the field.  -->
+<!-- The following sections clarify key concepts, demonstrate why reproducibility benefits researchers directly, and provide a framework with practical actions that researchers can adopt gradually. -->
+
+# Why reproducibility should be a priority
+
+<!-- [Consider moving the following paragraph to the availability section.]{style="background-color:yellow"} -->
+
+Reproducibility warrants attention even when perfect achievement seems impossible. Data sharing restrictions, proprietary software, or computational costs may create genuine barriers, but researchers should pursue reproducibility to the fullest extent feasible. Partial reproducibility provides more value than none, and the attempt itself often surfaces problems that would otherwise remain hidden.
+
+Irreproducible research creates opportunity costs across the research community. In the best case, researchers lose time deciphering undocumented work, while students face barriers to extending published findings. At worst, vastly more time can be wasted in ultimately fruitless efforts to expand, extend, and build on a body of work that has no empirical foundation [@King_1995]. In contrast, reproducible workflows offer multiple benefits: they lower the threshold for peer review scrutiny, serve as educational resources for analytical methods, and can increase research impact when other researchers can easily adopt, adapt, and, ultimately, cite the analytical methods. Reproducible (i.e., well-documented, well-organized and intuitive) code could become an asset that provides a template for similar analyses while reducing duplicated effort across research groups. 
+
+Most persuasively, reproducibility represents an investment in personal research efficiency rather than an altruistic burden. The primary beneficiary is typically the original author returning to analyses months later, having forgotten crucial details. Reproducible practices help researchers discover errors and avoid painful reconstruction of analytical decisions [@King_1995]. This reframes reproducibility from an imposed obligation to a personal productivity strategy that happens to benefit others. Taken together, reproducibility enhances both individual research projects and the field's collective efficiency.
+
+# Building reproducibility into research workflows
+
+<!-- Reproducibility requirements vary substantially across research contexts. A simple two-condition experiment needs different infrastructure than a deep learning pipeline, requires less methodological explanation, and typically speaks to a different audience. Rather than prescribe universal solutions, we outline selected principles and practices that researchers can adapt to their needs. The goal remains constant: transparent documentation that allows independent researchers to verify reported results without excessive effort. -->
+
+<!-- We organize these practices around four dimensions that range from necessary to helpful: availability (non-negotiable), portability (essential for most projects), organization (valuable for collaboration and future work), and explainability (critical when methods are complex or novel). Researchers can adjust their approach along these dimensions based on project complexity, disciplinary norms, and their target audience. -->
+
+Reproducibility starts with shared materials (see @fig-blocks). Without these materials, verification becomes impossible. Yet having the building blocks does not guarantee that others can assemble them. Like toy bricks that only fit together when their shapes match, code must work across different computing environments. Like instructions that specify the order of assembly, documentation must guide others through the analytical sequence. These requirements reflect the barriers we identified earlier: experts forget what novices need to know, technology creates friction, and rushed workflows skip documentation.
+
+The practices below address these obstacles. We organize them into four categories. Availability and portability form the essential minimum. However, several journals now require peer reviewers to verify that code is not only functional but also appropriately presented and documented. Researchers emphasize that this approach encourages more readable code and increases trust in computational results [@NHB_2021]. Organization and explainability enable this scrutiny, and add efficiency when projects grow complex, when teams collaborate, or when methods require justification. 
+
+Not every project needs the same approach though: A simple two-condition experiment needs different infrastructure and requires less methodological explanation than a deep learning pipeline. Researchers should therefore match their effort to their context, disciplinary norms, and their target audience.
+
+### Availability: Making materials accessible
+
+<!-- At minimum, data and code must be available. Persistent repositories with DOIs (OSF, Zenodo, Harvard Dataverse) provide stable access, while code-sharing platforms like GitHub lack this permanence. Ethical or legal constraints sometimes prevent direct data sharing, in which case synthetic data or clear access instructions become essential. When projects use restricted data sources, documenting access procedures helps others who hold appropriate permissions verify the work. -->
+
+<!-- Software choice also affects accessibility. Scripting languages automate analytical steps and eliminate manual point-and-click operations that others must tediously repeat and that can introduce errors. Open source languages like R and Python remove financial barriers that proprietary software (STATA, SPSS, MATLAB) creates. However, accessibility also depends on disciplinary norms: a Stata script may be more accessible to economists than an R script, despite the licensing costs. Researchers must balance these considerations when choosing tools. -->
+
+Sharing research materials once posed genuine logistical challenges. Today's infrastructure removes these obstacles. Persistent repositories with DOIs (OSF, Zenodo, Harvard Dataverse) provide stable, citable access to research materials at no cost. These platforms ensure materials remain available indefinitely. Yet not all sharing platforms offer the same guarantees. Popular code-sharing platforms like GitHub serve useful purposes during active development but lack the permanence that published research requires.
+
+Unfortunately, situations arise where direct data sharing proves impossible due to ethical or legal constraints. In these cases, synthetic data that preserve key statistical properties or clear access instructions become essential. When projects use restricted data sources, researchers should document access procedures to help others who hold appropriate permissions verify the work.
+
+Relatedly, authors should specify reuse permissions for their materials [@Wilkinson_2016]. Licensing choices affect how others can use shared materials. Open licenses (CC-BY for data, MIT or GPL for code) remove ambiguity about reuse permissions. Without explicit licenses, legal uncertainty may prevent others from building on published work even when materials are technically available.
+
+### Portability: Ensuring code runs elsewhere
+
+Even when researchers share data and scripts, the code often fails to run on other systems. These failures reflect several distinct portability challenges, each requiring attention.
+
+Analyses must first be automated rather than manual. Statistical software that relies on point-and-click operations creates barriers for independent verification because these actions remain unrecorded. Scripting languages like R and Python automate analytical steps and create an executable record of all operations. This eliminates the need for others to reconstruct undocumented manual procedures, though it also introduces the question of whether those scripts will run reliably across different computing environments.
+
+Even properly scripted analyses face basic portability issues. Hard-coded file paths like `C:/Users/Jane/data` work only on Jane's machine, while relative paths like `./data` can work anywhere. These simple failures prove easy to fix but often go unnoticed until someone else attempts to run the code.
+
+More complex failures arise from software dependencies. Packages update, functions get deprecated, and dependency chains shift. What ran perfectly in January may break in June when a single package updates. Researchers should therefore minimize dependencies and prefer stable, well-maintained packages over unvetted alternatives. Especially when such dependencies are unavoidable, researchers must document software choices, including exact package versions. 
+
+However, these documentation requirements scale with project complexity. Simple analyses may require only a minimal README file that lists system requirements, installation instructions, and software dependencies (including package versions). More complex projects benefit from tools that automate environment recreation and manage dependencies systematically. Various tools exist to address these challenges (see, e.g., nix, binder, code ocean or docker), each offering different levels of reproducibility guarantees [@RodriguesBaumann_2025; @Perkel_2019]. Researchers should adopt tools that match both their technical comfort and their project's complexity. Even though sophisticated analyses often justify investment in more comprehensive solutions, simple solutions are better than no solutions.
+
+Randomized procedures require additional attention. Bootstrapping, cross-validation, and neural network training produce different numbers on each run. Setting random seeds (`set.seed(230691)` in R, `random_state=230691` in Python) fixes the sequence of pseudorandom numbers the algorithm produces and allows other researchers to reproduce the exact results. Testing code on a fresh installation verifies that documentation captures all necessary steps. Asking colleagues unfamiliar with the project to run the code on her computer or a clean cloud environment reveals undocumented dependencies and implicit assumptions that authors may overlook. 
+
+<!-- Code that runs on one computer often fails on another. The simplest failures come from hard-coded file paths: C:/Users/Jane/data works only on Jane's machine, while ./data works anywhere. More complex failures arise from software dependencies. Packages update, functions get deprecated, and dependency chains shift. What ran perfectly in January may break in June when a single package updates. Researchers should therefore minimize dependencies and prefer stable, well-maintained packages over unvetted alternatives. Especially when such dependencies are unavoidable, researchers must document software choices, including exact package versions. However, these documentation requirements scale with project complexity. Simple analyses may require only a plain README file that lists software and package versions while complex projects benefit from tools that automate environment recreation: tools such as renv for R and conda for Python lock package versions, whereas Docker containers capture entire computational environments including operating system and language versions. -->
+
+<!-- Randomized procedures require additional attention. For example, bootstrapping, cross-validation, and neural network training produce different numbers on each run. Setting random seeds (set.seed(42) in R, random_state=42 in Python) allows others to recreate the same sequence of random numbers. Testing code on a fresh installation verifies that documentation captures all necessary steps. A colleague's computer or a clean cloud environment can serve this purpose. -->
+
+### Organization: Creating traceable workflows
+Reproducibility benefits when others to understand how files relate and how analysis proceeds. Clear, intuitive folder structures (`code/`, `data/`, `output/`) provide a foundation, with raw data kept read-only and separate from processed data. This separation prevents accidental modifications and allows others to verify all transformations from the original source.
+
+The analytical workflow builds on this structure. Simple projects might use a single well-documented script, while more complex analyses benefit from a modular structure where different scripts serve different purposes (such as data cleaning, statistical analysis, and visualization). Within such a structure, sequential numbering clarifies the order in which scripts should run (`01_clean.R`, `02_analyze.R`). A main file (`main.R` or `run_all.py`) that executes the complete analysis as 'push-button' reproduction removes any uncertainty about the workflow. The README file complements this organization by documenting the project structure, explaining execution sequence, and providing technical requirements for running the code (see Portability).
+
+Furthermore, outputs should be traceable both to the code that generates them and to the manuscript that reports them. Comments within scripts can link code sections to results ('`# Creates Table 1`'), while file names should correspond to manuscript elements (`figure_2.png` for Figure 2 in the paper).
+
+### Explainability: Making decisions transparent
+Code that runs and produces correct numbers may still resist scrutiny if its logic remains opaque. Linking code to manuscript results explicitly (e.g., "# Creates Table 1") connects analytical steps to reported findings. For straightforward analyses, inline comments that explain what each section does and why those choices were made may suffice. Comments should explain purpose rather than mechanics: why a variable received log-transformation, not that a log function was applied. For complex methods, literate programming approaches [@Knuth_1984] like Quarto or Jupyter Notebooks that interweave narrative explanations of analytical choices with executable code enhance comprehensibility. 
+
+Finally, writing data dictionaries that describe all variables, units, and coding schemes helps others understand the data structure.
+
+### Adapting practices to context
+These dimensions involve trade-offs. Literate programming that maximizes explainability through tutorial-style documentation may reduce portability by adding software dependencies. Publication-ready documents that maximize traceability may sacrifice explanatory depth. Researchers must balance these competing demands rather than optimize all dimensions simultaneously.
+
+<!-- This suggests a pragmatic hierarchy. Availability remains non-negotiable: there is no reproducibility without shared materials. Portability and organization should follow for most projects: documented dependencies and systematic project structures extend the shelf life of research. Beyond this foundation, priorities depend on context. Methodological papers where code constitutes part of the contribution benefit from literate programming that conveys how and why. Computationally light empirical papers might use literate programming primarily for typesetting: embedding inline code to generate numbers while hiding code chunks, creating clean manuscripts where every result is computed rather than copied. -->
+
+<!-- A comprehensive checklist organized by research complexity appears in supplementary materials.  -->
+
+# Systemic steps towards reproducible research
+
+Individual researchers can implement the practices outlined above and incremental steps matter: even partial adoption of reproducible workflows yields benefits, both for individual researchers and for the field.
+
+Nevertheless, reproducibility as a norm requires systemic change. A growing culture of reproduction has emerged across disciplines, with systematic verification of published findings now more common than ever [@BrodeurEtAl_2024]. Several prominent journals support this shift through institutional reforms. Nature Human Behaviour, Psychological Science, Management Science, and journals published by the American Economic Association now implement reproducibility checks to test whether code executes successfully before publication. As more journals adopt such standards, reproducibility becomes normalized.
+
+Still, some researchers worry that reproducibility requirements create unnecessary burdens. As discussed earlier, this concern often reflects a short-sighted view: reproducible workflows ultimately save time--especially when integrated from project inception rather than retrofitted during manuscript preparation. Moreover, emerging technologies now further reduce these barriers. Generative AI tools can support tedious tasks such as code documentation and codebook creation.
+
+Graduate education represents another critical lever for change. Reproducibility training remains rare in doctoral programs despite its fundamental importance. When programs treat reproducible workflows as core methodological training rather than optional skills, researchers adopt these practices from the start of their careers. Requiring students to reproduce a key paper their dissertation builds on would teach the curse of expertise firsthand while developing practical skills. Reproducibility then becomes standard practice rather than an additional burden.
+
+Behavioral patterns take time to shift, and the field will not transform overnight. But simply bringing the notion of reproducibility to the forefront and making it a routine will make a difference, eventually [@Peng_2011]. 
+
+<!-- Importantly, these practices yield greater benefits when integrated from project inception rather than retrofitted during manuscript preparation. However, incremental implementation proves more effective than either pursuing perfection or abandoning the effort entirely. -->
+
+<!-- Emerging technologies offer new avenues for lowering reproducibility barriers. Generative AI tools can automate code documentation, explain complex scripts, and help researchers understand unfamiliar code. However, these tools excel at describing what code does rather than explaining why specific analytical choices were made, which further establishes the need for researchers to document their analytical decisions alongside their code. As reproducibility becomes increasingly central to research credibility, leveraging such tools while maintaining critical oversight represents a pragmatic path forward. -->
+
+<!-- Whereas individual researchers can implement the practices outlined above, establishing reproducibility as a norm requires systemic change. Most critically, reproducibility training remains rare in doctoral programs despite being both instructive and fundamental to research credibility. Similarly, some journals could, and some already do  -->
+<!-- <!-- [name examples]{style="background-color:yellow"}  -->
+<!-- strengthen reproducibility by mandating computational reproducibility checks during review and requiring authors to demonstrate their code executes successfully before publication. -->
+
+
+# References
+
+:::{#refs}
+:::
+
+```{=typst}
+#show: appendix.with()
+```
+
+# Appendix content here

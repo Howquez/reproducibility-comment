@@ -1,0 +1,90 @@
+---
+title: Prioritizing computational reproducibility in behavioral science
+author:
+- name: Hauke Roggenkamp [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0009-0005-5176-4718)
+- name: Susanne Adler [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0002-3211-6871)
+- name: Michael V. Reiss [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0002-6094-9985)
+- name: Stefan Feuerriegel [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0001-7856-8729)
+- name: Nicolas Pröllochs [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0002-1835-7302)
+- name: Claire Robertson [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0001-8403-6358)
+- name: Felix Holzmeister [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0001-9606-0427)
+date: now
+date-format: long
+format: 
+  pdf:
+    classoption: twocolumn
+    include-in-header: 
+      text: |
+        \usepackage{titling}
+        \usepackage{sectsty}
+        \usepackage{lettrine}
+        \usepackage{flushend}
+        \usepackage[all]{nowidow}
+        \usepackage{abstract}
+        \renewcommand{\abstractname}{}
+        \renewcommand{\absnamepos}{empty}
+        \renewcommand{\LettrineTextFont}{\normalfont}
+        \allsectionsfont{\rmfamily}
+        \renewcommand{\familydefault}{\rmdefault}
+        \pretitle{\begin{center}\LARGE\rmfamily}
+        \posttitle{\end{center}}
+        \predate{\begin{center}\rmfamily}
+        \postdate{\end{center}}
+        \setlength{\parindent}{0.25in}
+        \setlength{\parskip}{0pt}
+        \renewcommand{\thefootnote}{}
+        \pretitle{\begin{center}\LARGE\rmfamily \vspace{1em}}
+        \posttitle{\vspace{1em} \end{center}}
+        \predate{\begin{center}\rmfamily \vspace{1em}}
+        \postdate{\vspace{2em} \end{center}}
+    template-partials:
+      - ../misc/before-body.tex # abstract
+toc: false
+number-sections: false
+fig-cap-location: top
+execute:
+  echo: false
+  warning: false
+bibliography: ../literature/_references.bib
+nocite: |
+  @*
+---
+
+\footnotetext{Hauke Roggenkamp, PhD Candidate in Marketing at the University of St. Gallen, St. Gallen, Switzerland (email: \href{mailto:Hauke.Roggenkamp@unisg.ch}{Hauke.Roggenkamp@unisg.ch}). Michael V. Reiss, Postdoctoral Researcher in Communication Science at the Leibniz Institute for Media Research, Hamburg, Germany. Susanne Adler, Postdoctoral Researcher in Marketing at the LMU Munich, Munich, Germany. Stefan Feuerriegel, Full Professor at the School of Management and the Faculty of Mathematics, Informatics, and Statistics at LMU Munich, Munich, Germany. Nicolas Pröllochs, Professor of Data Science and Digitization at the University of Gießen, Gießen, Germany. Claire Robertson, Postdoctoral Researcher in Social Psychology at NYU, New York, USA. Felix Holzmeister, Assistant Professor of Behavioral and Experimental Economics and Finance at the University of Innsbruck, Innsbruck, Austria.}
+
+
+
+
+\lettrine[lines=3]{T}{ he} behavioral sciences have demonstrated remarkable progress in response to credibility challenges over the past decade [@OpenScienceCollaboration_2015; @CamererEtAl_2016; @CamererEtAl_2018; @KleinEtAl_2018]. Specifically, the open science movement, pre-registration, and crowd-sourced science have transformed research practices and strengthened methodological rigor. One of these crowd-sourced collaborations is featured in this issue and reports that x percent of published findings replicate/are reproducible etc. (see the I4Rs meta-paper).
+
+Whereas replicability describes the ability to obtain consistent results using new data, _reproducibility_ is a more fundamental criterion that comes in two complementary forms [@DreberJohannesson_2024]. Computational reproducibility describes the extent to which one can recreate numerically identical results using the same data and code as the original authors. As such, it verifies the mapping between data, code, and reported results. Recreate reproducibility ignores the original authors' code and describes the extent to which one can recreate numerically identical results using the same data and only the published methodological descriptions. As such, it verifies the mapping between reported methods and reported results, catching gaps in methodological reporting or coding errors that computational reproducibility may miss.
+
+More fundamentally, the critical standard is whether not whether the results but the _conclusions and claims_ remain consistent. Rather than adopting a dichotomous pass/fail approach (analogous to the widely applied binary treatment of statistical significance) we advocate for viewing reproducibility as existing on a spectrum. This includes assessing the degree of preservation across: (1) the statistical significance and direction of primary results, (2) the substantive magnitude of estimated effects, and (3) the overall interpretation and policy implications.^[When numerical discrepancies do arise, we recommend applying a principle of in _dubio pro reo_: giving authors the benefit of the doubt and engage in respectful dialogue with original authors to clarify methodological details before concluding that reproduction has failed.]
+
+As behavioral science continues addressing broader credibility challenges, ensuring a mapping of methods, code and results represents a fundamental step toward transparent, integrative research. Accordingly, these two types reproducibility should be a minimal requirement during the peer review process, which must evaluate not only the appropriateness of the methods, but also verify that the code implements these methods accurately and that they produce the reported results. Yet, when put to the test, more than half of 2,091 replication packages retrieved from the Harvard Dataverse repository fail to execute [@TrisovicEtAl_2022]. [Consider other sources of _real_ reproducibility issues here.]
+
+Why, despite its importance, do so many projects fail to achieve reproducibility? The challenge likely stems from both technical barriers and researcher priorities. On the technical side, rapidly evolving software environments, complex dependency chains, and inconsistent standards create indeed some obstacles [@Epskamp_2019]. However, these technical challenges are compounded when researchers hesitate to invest in reproducible workflows due to perceived time constraints, assumptions about limited reuse value, or concerns about required technical expertise.
+These reservations, while understandable, reflect misperceptions about both the effort required and the benefits gained. While the time investment is frontloaded, adopting a reproducible workflow right from the outset of a project can actually increase efficiency, reduce errors, and, ultimately, save time. Moreover, the primary beneficiary of reproducible code is often the researcher themselves, when revisiting analyses months or even years later. For this reason, we suggest a mindset @Vilhuber_2021 coins  "computational empathy". This concept encourages researchers to structure their work as if handing it to someone with their background but no project-specific knowledge, or more pragmatically, to their future self who will inevitably forget project details during the review process.
+
+Building on this idea, we propose a phase-based framework that translates computational empathy into concrete actions to increase reproducibility. Our approach distinguishes between minimal standards, that should be achievable by all researchers regardless of technical background, and best practices for those with more advanced skills. This structure is intended to acknowledge varying technical skills (or time constraints) while ensuring basic reproducibility remains accessible.
+
+
+
+<!-- In Table 1, we summarize tiered recommendations based on different levels of time availability and technical skill. Specifically, we propose a "computational empathy" mindset—designing research materials with future users in mind. -->
+
+<!-- First, comprehensive documentation is essential. This begins with informative README files that explain your project's purpose, structure, and execution steps. Use clear, descriptive, and consistent file and variable names that provide sufficient context without becoming ambiguous or overly long. Documentation should anticipate questions a future user might have: What does each script do? In what order should files be executed? What do variable names represent? Well-documented projects reduce the cognitive burden for future users, including your future self. -->
+
+<!-- Second, adopt literate programming approaches that naturally facilitate documentation by interweaving code, explanation, and results. Tools like Quarto serve dual purposes: they can produce standalone analysis documents that clarify analytical choices, or they can generate entire manuscripts as self-contained documents, incorporating narrative text, code, data manipulations, figures, tables, and references. While collaboration in Quarto may be less intuitive than in Overleaf or Microsoft Word, solutions exist through version control systems or collaborative editing platforms. Many journals now provide dedicated templates for these formats, allowing seamless integration of analysis and reporting while creating a transparent record of the entire research process. -->
+
+<!-- Third, establish structured organization principles. Maintain a clear directory structure with separate subdirectories for data, code, and outputs. This partitioning not only enhances navigability but also supports proper data management. Never modify raw data files directly; instead, document all transformations in your code to maintain an auditable trail from raw data to final results. Consistent organization creates intuitive projects that others can quickly understand and navigate. -->
+
+<!-- Fourth, implement environment management strategies. Dependency management tools like groundhog [@SimonsohnGruson_2024], which allows version-specific package loading, or renv [@renv], which captures the complete R environment, effectively preserve computational environments. For more comprehensive solutions, containerization approaches like Binder [@binder] or Docker enable complete environment reproduction. These tools address one of the most common barriers to reproducibility: ensuring that code runs consistently despite evolving software landscapes. -->
+
+<!-- Technical challenges are real but surmountable; the more significant barriers are often perceptual and motivational. The path forward begins with small, practical steps that individual researchers can take today, supported data editors of journals that increasingly demand CR. By creating and documenting our data and code with future users in mind, we can make our contributions more credible, transparent, and cumulative. -->
+
+
+# References
+
+::: {#refs}
+:::
+

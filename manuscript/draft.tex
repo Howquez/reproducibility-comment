@@ -1,0 +1,535 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  twocolumn]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\usepackage{titling}
+\usepackage{sectsty}
+\usepackage{lettrine}
+\usepackage{flushend}
+\usepackage[all]{nowidow}
+\usepackage{abstract}
+\renewcommand{\abstractname}{}
+\renewcommand{\absnamepos}{empty}
+\renewcommand{\LettrineTextFont}{\normalfont}
+\allsectionsfont{\rmfamily}
+\renewcommand{\familydefault}{\rmdefault}
+\pretitle{\begin{center}\LARGE\rmfamily}
+\posttitle{\end{center}}
+\predate{\begin{center}\rmfamily}
+\postdate{\end{center}}
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{0pt}
+\renewcommand{\thefootnote}{}
+\pretitle{\begin{center}\LARGE\rmfamily \vspace{1em}}
+\posttitle{\vspace{1em} \end{center}}
+\predate{\begin{center}\rmfamily \vspace{1em}}
+\postdate{\vspace{2em} \end{center}}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Prioritizing computational reproducibility in behavioral science},
+  pdfauthor={Hauke Roggenkamp ; Susanne Adler ; Michael V. Reiss ; Stefan Feuerriegel ; Nicolas Pröllochs ; Claire Robertson ; Felix Holzmeister },
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Prioritizing computational reproducibility in behavioral science}
+\author{Hauke Roggenkamp
+\href{https://orcid.org/0009-0005-5176-4718}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}} \and Susanne
+Adler
+\href{https://orcid.org/0000-0002-3211-6871}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}} \and Michael
+V. Reiss
+\href{https://orcid.org/0000-0002-6094-9985}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}} \and Stefan
+Feuerriegel
+\href{https://orcid.org/0000-0001-7856-8729}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}} \and Nicolas
+Pröllochs
+\href{https://orcid.org/0000-0002-1835-7302}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}} \and Claire
+Robertson
+\href{https://orcid.org/0000-0001-8403-6358}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}} \and Felix
+Holzmeister
+\href{https://orcid.org/0000-0001-9606-0427}{\includegraphics[width=0.018\linewidth,height=\textheight,keepaspectratio]{../misc/orcid.png}}}
+\date{July 3, 2025}
+
+\begin{document}
+
+\makeatletter
+\twocolumn[
+\maketitle
+\begin{@twocolumnfalse}
+
+\begin{abstract}
+% Write your abstract here ----------------------------------------------------
+
+\vspace{1em}
+
+\normalsize \noindent Standfirst (in lieu of an abstract) goes here (up to 360 characters, including spaces). %While behavioral and social sciences have made progress addressing credibility challenges, computational reproducibility—the ability to verify results using original data and code—remains inadequately addressed. In this comment, we draw on our experience as both reproducers and authors to propose a "computational empathy" mindset with four key practices: comprehensive documentation, literate programming, structured organization, and environment management. These practices require minimal technical knowledge yet considerably improve reproducibility, allowing researchers to make their contributions more credible, transparent, and cumulative.
+
+
+
+% abstract completed  ----------------------------------------------------------
+\end{abstract}
+
+\vspace{3em}
+
+
+\end{@twocolumnfalse}
+]
+\makeatother
+
+
+\footnotetext{Hauke Roggenkamp, PhD Candidate in Marketing at the University of St. Gallen, St. Gallen, Switzerland (email: \href{mailto:Hauke.Roggenkamp@unisg.ch}{Hauke.Roggenkamp@unisg.ch}). Michael V. Reiss, Postdoctoral Researcher in Communication Science at the Leibniz Institute for Media Research, Hamburg, Germany. Susanne Adler, Postdoctoral Researcher in Marketing at the LMU Munich, Munich, Germany. Stefan Feuerriegel, Full Professor at the School of Management and the Faculty of Mathematics, Informatics, and Statistics at LMU Munich, Munich, Germany. Nicolas Pröllochs, Professor of Data Science and Digitization at the University of Gießen, Gießen, Germany. Claire Robertson, Postdoctoral Researcher in Social Psychology at NYU, New York, USA. Felix Holzmeister, Assistant Professor of Behavioral and Experimental Economics and Finance at the University of Innsbruck, Innsbruck, Austria.}
+
+\lettrine[lines=3]{T}{ he} behavioral sciences have demonstrated
+remarkable progress in response to credibility challenges over the past
+decade (Open Science Collaboration 2015; Camerer et al. 2016, 2018;
+Klein et al. 2018). Specifically, the open science movement,
+pre-registration, and crowd-sourced science have transformed research
+practices and strengthened methodological rigor. One of these
+crowd-sourced collaborations is featured in this issue and reports that
+x percent of published findings replicate/are reproducible etc. (see the
+I4Rs meta-paper).
+
+Whereas replicability describes the ability to obtain consistent results
+using new data, \emph{reproducibility} is a more fundamental criterion
+that comes in two complementary forms (Dreber and Johannesson 2025).
+Computational reproducibility describes the extent to which one can
+recreate numerically identical results using the same data and code as
+the original authors. As such, it verifies the mapping between data,
+code, and reported results. Recreate reproducibility ignores the
+original authors' code and describes the extent to which one can
+recreate numerically identical results using the same data and only the
+published methodological descriptions. As such, it verifies the mapping
+between reported methods and reported results, catching gaps in
+methodological reporting or coding errors that computational
+reproducibility may miss.
+
+More fundamentally, the critical standard is whether not whether the
+results but the \emph{conclusions and claims} remain consistent. Rather
+than adopting a dichotomous pass/fail approach (analogous to the widely
+applied binary treatment of statistical significance) we advocate for
+viewing reproducibility as existing on a spectrum. This includes
+assessing the degree of preservation across: (1) the statistical
+significance and direction of primary results, (2) the substantive
+magnitude of estimated effects, and (3) the overall interpretation and
+policy implications.\footnote{When numerical discrepancies do arise, we
+  recommend applying a principle of in \emph{dubio pro reo}: giving
+  authors the benefit of the doubt and engage in respectful dialogue
+  with original authors to clarify methodological details before
+  concluding that reproduction has failed.}
+
+As behavioral science continues addressing broader credibility
+challenges, ensuring a mapping of methods, code and results represents a
+fundamental step toward transparent, integrative research. Accordingly,
+these two types reproducibility should be a minimal requirement during
+the peer review process, which must evaluate not only the
+appropriateness of the methods, but also verify that the code implements
+these methods accurately and that they produce the reported results.
+Yet, when put to the test, more than half of 2,091 replication packages
+retrieved from the Harvard Dataverse repository fail to execute
+(Trisovic et al. 2022). {[}Consider other sources of \emph{real}
+reproducibility issues here.{]}
+
+Why, despite its importance, do so many projects fail to achieve
+reproducibility? The challenge likely stems from both technical barriers
+and researcher priorities. On the technical side, rapidly evolving
+software environments, complex dependency chains, and inconsistent
+standards create indeed some obstacles (Epskamp 2019). However, these
+technical challenges are compounded when researchers hesitate to invest
+in reproducible workflows due to perceived time constraints, assumptions
+about limited reuse value, or concerns about required technical
+expertise. These reservations, while understandable, reflect
+misperceptions about both the effort required and the benefits gained.
+While the time investment is frontloaded, adopting a reproducible
+workflow right from the outset of a project can actually increase
+efficiency, reduce errors, and, ultimately, save time. Moreover, the
+primary beneficiary of reproducible code is often the researcher
+themselves, when revisiting analyses months or even years later. For
+this reason, we suggest a mindset Vilhuber (2021) coins ``computational
+empathy''. This concept encourages researchers to structure their work
+as if handing it to someone with their background but no
+project-specific knowledge, or more pragmatically, to their future self
+who will inevitably forget project details during the review process.
+
+Building on this idea, we propose a phase-based framework that
+translates computational empathy into concrete actions to increase
+reproducibility. Our approach distinguishes between minimal standards,
+that should be achievable by all researchers regardless of technical
+background, and best practices for those with more advanced skills. This
+structure is intended to acknowledge varying technical skills (or time
+constraints) while ensuring basic reproducibility remains accessible.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Requirement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+When
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Specific Actions
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AVAILABILITY & Before starting & • Create project repository with
+standard structure (code/, data/, output/, docs/) \\
+& • Set up version control (git init) and link to GitHub/GitLab & \\
+& • Choose data repository (Zenodo/OSF/Dataverse) and reserve DOI & \\
+While working & • Commit code changes daily with descriptive messages
+& \\
+& • Use git-lfs or external storage for large data files
+(\textgreater100MB) & \\
+& • Save raw data separately from processed data & \\
+Before submission & • Upload complete dataset with documentation to
+repository & \\
+& • Ensure all code files are tracked in version control & \\
+& • Test that repository contains everything needed to reproduce & \\
+\end{longtable}
+
+TRACEABILITY \textbar{} Before starting \textbar{} • Create README
+template with sections for: requirements, file structure, execution
+order \textbar{} \textbar{} • Decide on naming conventions for files and
+variables \textbar{} While working \textbar{} • Number scripts in
+execution order (01\_clean\_data.R, 02\_analysis.R) \textbar{}
+\textbar{} • Document each analysis decision as you make it \textbar{}
+\textbar{} • Create a master script that runs entire pipeline \textbar{}
+Before submission \textbar{} • Write step-by-step execution instructions
+in README \textbar{} \textbar{} • Create flowchart showing data/code
+dependencies \textbar{} \textbar{} • Include expected runtime and output
+descriptions
+
+EXPLAINABILITY \textbar{} Before starting \textbar{} • Choose literate
+programming tool (Jupyter, R Markdown, Quarto) \textbar{} \textbar{} •
+Set up computational notebook for main analyses \textbar{} While working
+\textbar{} • Write explanatory text before each code chunk \textbar{}
+\textbar{} • Avoid all manual data manipulation (no Excel edits)
+\textbar{} \textbar{} • Include sanity checks and assertions in code
+\textbar{} Before submission \textbar{} • Add comments explaining
+non-obvious code logic \textbar{} \textbar{} • Document any deviations
+from pre-registration \textbar{} \textbar{} • Include interpretation of
+key results in notebook
+
+CONTAINERIZATION \textbar{} Before starting \textbar{} • Create
+requirements.txt/renv.lock file \textbar{} \textbar{} • Document
+operating system and software versions \textbar{} \textbar{} • Use
+relative paths exclusively (./data not C:/Users/\ldots) \textbar{} While
+working \textbar{} • Update dependency list when adding packages
+\textbar{} \textbar{} • Test code regularly in fresh environment
+\textbar{} \textbar{} • Avoid system-specific commands or paths
+\textbar{} Before submission \textbar{} • Create Docker container or
+virtual environment \textbar{} \textbar{} • Test entire pipeline on
+different operating system \textbar{} \textbar{} • Include installation
+instructions for all dependencies
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-AuerEtAl_2024}
+Auer, Tobias, Maria Ulasik, and Felix Holzmeister. 2024. {``A Comment on
+"Motivated Errors" by Exley and Kessler (2024).''} I4R Discussion Paper
+Series 161. The Institute for Replication (I4R).
+\url{https://ideas.repec.org/p/zbw/i4rdps/161.html}.
+
+\bibitem[\citeproctext]{ref-BrodeurEtAl_2024}
+Brodeur, Abel, Anna Dreber, Fernando Hoces de la Guardia, and Edward
+Miguel. 2024. {``Reproduction and Replication at Scale.''}
+Correspondence. \emph{Nature Human Behaviour} 8 (January): 2--3.
+\url{https://doi.org/10.1038/s41562-023-01807-2}.
+
+\bibitem[\citeproctext]{ref-CamererEtAl_2016}
+Camerer, Colin F., Anna Dreber, Eskil Forsell, Teck-Hua Ho, Jürgen
+Huber, Magnus Johannesson, Michael Kirchler, et al. 2016. {``Evaluating
+Replicability of Laboratory Experiments in Economics.''} \emph{Science}
+351 (6280): 1433--36. \url{https://doi.org/10.1126/science.aaf0918}.
+
+\bibitem[\citeproctext]{ref-CamererEtAl_2018}
+Camerer, Colin F., Anna Dreber, Felix Holzmeister, Teck-Hua Ho, Jürgen
+Huber, Magnus Johannesson, Michael Kirchler, et al. 2018. {``Evaluating
+the Replicability of Social Science Experiments in {Nature} and
+{Science} Between 2010 and 2015.''} Letter. \emph{Nature Human
+Behaviour} 2 (August): 637--44.
+\url{https://doi.org/10.1038/s41562-018-0399-z}.
+
+\bibitem[\citeproctext]{ref-DeerAdlerDattaEtAl_2025}
+Deer, Lachlan, Susanne J. Adler, Hannes Datta, Natalie Mizik, and Marko
+Sarstedt. 2025. {``Toward Open Science in Marketing Research.''}
+\emph{International Journal of Research in Marketing} 42 (1): 212--33.
+\url{https://doi.org/10.1016/j.ijresmar.2024.12.005}.
+
+\bibitem[\citeproctext]{ref-DreberJohannesson_2024}
+Dreber, Anna, and Magnus Johannesson. 2025. {``A Framework for
+Evaluating Reproducibility and Replicability in Economics.''}
+\emph{Economic Inquiry} 63 (2): 338--56.
+https://doi.org/\url{https://doi.org/10.1111/ecin.13244}.
+
+\bibitem[\citeproctext]{ref-Epskamp_2019}
+Epskamp, Sacha. 2019. {``Reproducibility and Replicability in a
+Fast-Paced Methodological World.''} \emph{Advances in Methods and
+Practices in Psychological Science} 2 (2): 145--55.
+\url{https://doi.org/10.1177/2515245919847421}.
+
+\bibitem[\citeproctext]{ref-KleinEtAl_2018}
+Klein, Richard A., Michelangelo Vianello, Fred Hasselman, Byron G.
+Adams, Reginald B. AdamsJr., Sinan Alper, Mark Aveyard, et al. 2018.
+{``Many Labs 2: Investigating Variation in Replicability Across Samples
+and Settings.''} \emph{Advances in Methods and Practices in
+Psychological Science} 1 (4): 443--90.
+\url{https://doi.org/10.1177/2515245918810225}.
+
+\bibitem[\citeproctext]{ref-Knuth_1984}
+Knuth, D. E. 1984. {``Literate Programming.''} \emph{The Computer
+Journal} 27 (2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
+
+\bibitem[\citeproctext]{ref-LeBelEtAl_2018}
+LeBel, Etienne P., Randy J. McCarthy, Brian D. Earp, Malte Elson, and
+Wolf Vanpaemel. 2018. {``A Unified Framework to Quantify the Credibility
+of Scientific Findings.''} \emph{Advances in Methods and Practices in
+Psychological Science} 1 (3): 389--402.
+\url{https://doi.org/10.1177/2515245918787489}.
+
+\bibitem[\citeproctext]{ref-OpenScienceCollaboration_2015}
+Open Science Collaboration. 2015. {``Estimating the Reproducibility of
+Psychological Science.''} \emph{Science} 349 (6251): aac4716.
+\url{https://doi.org/10.1126/science.aac4716}.
+
+\bibitem[\citeproctext]{ref-ParsonsEtAl_2022}
+Parsons, Sam, Flávio Azevedo, Mahmoud M. Elsherif, Samuel Guay, Owen N.
+Shahim, Gisela H. Govaart, Emma Norris, et al. 2022. {``A
+Community-Sourced Glossary of Open Scholarship Terms.''} Comment.
+\emph{Nature Human Behaviour} 6: 312--18.
+\url{https://doi.org/10.1038/s41562-021-01269-4}.
+
+\bibitem[\citeproctext]{ref-binder}
+Project Jupyter, Matthias Bussonnier, Jessica Forde, Jeremy Freeman,
+Brian Granger, Tim Head, Chris Holdgraf, et al. 2018. {``{B}inder 2.0 -
+{R}eproducible, Interactive, Sharable Environments for Science at
+Scale.''} In \emph{{P}roceedings of the 17th {P}ython in {S}cience
+{C}onference}, edited by Fatih Akici, David Lippa, Dillon Niederhut, and
+M Pacer, 113--20.
+\href{https://doi.org/\%2010.25080/Majora-4af1f417-011\%20}{https://doi.org/
+10.25080/Majora-4af1f417-011 }.
+
+\bibitem[\citeproctext]{ref-promoting2024}
+{``Promoting Reproduction and Replication at Scale.''} 2024.
+\emph{Nature Human Behaviour} 8 (1).
+\url{https://doi.org/10.1038/s41562-024-01818-7}.
+
+\bibitem[\citeproctext]{ref-ReissRoggenkamp_2025}
+Reiss, Michael V., and Hauke Roggenkamp. 2025. {``A Comment on
+"Negativity Drives Online News Consumption".''} I4R Discussion Paper
+Series 199. Institute for Replication (I4R).
+\url{https://hdl.handle.net/10419/311304}.
+
+\bibitem[\citeproctext]{ref-RobertsonEtAl_2023}
+Robertson, Claire E., Nicolas Pröllochs, Kaoru Schwarzenegger, Philip
+Pärnamets, Jay J. Van Bavel, and Stefan Feuerriegel. 2023. {``Negativity
+Drives Online News Consumption.''} \emph{Nature Human Behaviour} 7:
+812--22. \url{https://doi.org/10.1038/s41562-023-01538-4}.
+
+\bibitem[\citeproctext]{ref-SimonsohnGruson_2024}
+Simonsohn, Uri, and Hugo Gruson. 2024. \emph{Groundhog: Version-Control
+for CRAN, GitHub, and GitLab Packages}.
+\url{https://CRAN.R-project.org/package=groundhog}.
+
+\bibitem[\citeproctext]{ref-TrisovicEtAl_2022}
+Trisovic, Ana, Matthew K. Lau, Thomas Pasquier, and Mercè Crosas. 2022.
+{``A Large-Scale Study on Research Code Quality and Execution.''}
+Analysis. \emph{Scientific Data} 9 (60).
+\url{https://doi.org/10.1038/s41597-022-01143-6}.
+
+\bibitem[\citeproctext]{ref-renv}
+Ushey, Kevin, and Hadley Wickham. 2025. \emph{Renv: Project
+Environments}. \url{https://CRAN.R-project.org/package=renv}.
+
+\bibitem[\citeproctext]{ref-Vilhuber_2021}
+Vilhuber, Lars. 2021. {``Fireside Chat with AEA Data Editor:
+Demystifying Reproducibility.''} Zenodo.
+\url{https://doi.org/10.5281/zenodo.4450855}.
+
+\bibitem[\citeproctext]{ref-VilhuberEtAl_2022}
+Vilhuber, Lars, Marie Connolly, Miklós Koren, Joan Llull, and Peter
+Morrow. 2022. {``A Template README for Social Science Replication
+Packages.''} Technical note. Social Science Data Editors.
+\url{https://doi.org/10.5281/zenodo.7293838}.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

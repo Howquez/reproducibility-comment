@@ -1,0 +1,79 @@
+---
+title: Comment on “Prioritizing computational reproducibility in behavioral science”
+author:
+- name: Hauke Roggenkamp [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0009-0005-5176-4718)
+- name: Michael V. Reiss [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0002-6094-9985)
+- name: Stefan Feuerriegel [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0001-7856-8729)
+- name: Nicolas Pröllochs [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0002-1835-7302)
+- name: Claire Robertson [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0001-8403-6358)
+- name: Felix Holzmeister [![](../misc/orcid.png){width=1.8%}](https://orcid.org/0000-0001-9606-0427)
+
+date: now
+date-format: long
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{titling}
+        \usepackage{sectsty}
+        \allsectionsfont{\rmfamily}
+        \subsectionfont{\rmfamily\normalsize}
+        \usepackage[superscript,biblabel]{cite}
+        \usepackage{titlesec}
+        \usepackage{hyperref}
+        \renewcommand{\familydefault}{\rmdefault}
+        \pretitle{\begin{center}\LARGE\rmfamily}
+        \posttitle{\end{center}}
+        \predate{\begin{center}\rmfamily}
+        \postdate{\end{center}}
+        \titlespacing*{\subsection}{0pt}{12pt}{-5pt}
+        \renewcommand{\thefootnote}{}
+        
+
+toc: false
+number-sections: false
+fig-cap-location: top
+execute:
+  echo: false
+  warning: false
+bibliography: ../literature/_references.bib
+csl: nature.csl
+---
+
+
+\footnotetext{Hauke Roggenkamp, PhD Candidate in Marketing at the University of St. Gallen, St. Gallen, Switzerland (email: \href{mailto:Hauke.Roggenkamp@unisg.ch}{Hauke.Roggenkamp@unisg.ch}). Michael V. Reiss, Postdoctoral Researcher in Communication Science at the Leibniz Institute for Media Research, Hamburg, Germany. Stefan Feuerriegel, Full Professor at the School of Management and the Faculty of Mathematics, Informatics, and Statistics at LMU Munich, Munich, Germany. Nicolas Pröllochs, Professor of Data Science and Digitization at the University of Gießen, Gießen, Germany. Claire Robertson, Postdoctoral Researcher in Social Psychology at NYU, New York, USA. Felix Holzmeister, Assistant Professor of Behavioral and Experimental Economics and Finance at the University of Innsbruck, Innsbruck, Austria.}
+
+
+Dear Sir or Madame,
+
+\vspace{0.25cm}
+
+We write regarding a potential _Comment_ article on “Prioritizing computational reproducibility in behavioral science.” Our _Comment_ would directly build on your journal's new partnership with the Institute for Replication (as announced in your January 2024 Editorial and Correspondence pieces [@promoting2024; @BrodeurEtAl_2024]) by offering insights from our dual perspective as both reproducers [@ReissRoggenkamp_2025] and authors of reproduced work [@RobertsonEtAl_2023] through their initiative. In particular, we aim to discuss challenges and actionable solutions to ensure computational reproducibility (e.g., good coding practices, documentation, literature programming, etc.).
+
+## The motivation behind our _Comment_:
+In our _Comment_, we aim to reflect on our recent participation in a crowd-sourced reproduction project [@promoting2024; @BrodeurEtAl_2024] in which we experienced challenges that are inherent to computational reproducibility. Critically, we found that  even with well-documented materials (including comprehensive data, code, and consistent author support throughout the process), precise reproduction of the original results proved easier said than done. While conclusions remained qualitatively consistent, our experience raises a pressing question: How can we design our computational workflows today to ensure robust, lasting reproducibility that strengthens cumulative science for tomorrow? Hence, we would like to discuss challenges and potential solutions to ensure computational reproducibility in behavioral science. 
+
+## Computational reproducibility is a neglected foundation of credible science:
+The behavioral and social sciences have demonstrated remarkable progress in response to credibility challenges [@CamererEtAl_2018] over the past decade. The current initiative by Nature Human Behaviour is another milestone (beyond best practices such as pre-registrations and Registered Reports, the open science movement, and crowd-sourced projects that have transformed research practices and strengthened methodological rigor, particularly in supporting findings with new data collections).
+
+However, a more fundamental challenge remains largely unaddressed: computational reproducibility–the ability to systematically verify and build upon published findings using the same dataset and code. This foundational aspect of cumulative science has received surprisingly little attention, despite its critical importance. Our first-hand experience mirrors recent empirical findings suggesting that about half of all published research code fails to execute during reproduction efforts [@TrisovicEtAl_2022] and highlights that we must also turn our attention to computational reproducibility. The Institute for Replication's initiative now provides a unique opportunity to bring this essential but overlooked issue to the forefront of research practice. As such, we move beyond the traditional focus on effect sizes in replication projects but focus on the underlying challenges of working with data and code from other author teams, created using different systems and at different times.  
+
+## Our proposal content:
+We aim to draw upon our dual perspective as both replicators and original authors, and, based on this, we propose **actionable steps** to improve computational reproducibility in behavioral and social science. Our approach combines direct experience with emerging best practices in the field. Crucially, we recognize that lasting change in scientific culture requires carefully balancing three key factors: reproducibility benefits, workflow efficiency, and technical skill development.
+
+With the aim that every subsequent user of a replication package can fully execute its content with minimal preconditions or preparations, we propose three key practices that balance immediate usability with long-term maintenance:
+
+First, we advocate for a deceptively simple but crucial "computational empathy"-mindset: designing research code with future users in mind. This includes both documentation (such as standardized READMEs that detail the file execution and provide relevant context) as well as consistent organization (such as descriptive file and variable names). Second, we propose multiple avenues for adopting literate programming practices. These include notebooks, which naturally facilitate documentation by interweaving code, explanation, and results, and Quarto, which enables writing entire manuscripts in a single self-contained document. Third, we discuss different approaches to environment and package management to prevent version conflicts between software dependencies and ensure reproducibility across time.
+
+We are confident that such a _Comment_ will attract a broad audience in behavioral and social sciences (e.g., psychology, economics, political science, computational social science). While our piece connects to current discussions around research credibility and reproducibility published in Nature Human Behaviour, our _Comment_ will point to the unique but often neglected challenges, as well as opportunities for making behavioral/social science more reproducible through better data analysis practices. 
+
+We would like to seek your opinion on this proposed _Comment._ Our interdisciplinary author team brings together perspectives from across the social and behavioral sciences, combining researchers who conducted the reproduction, members of the original author team, and an expert in crowd-sourced metascience projects. Should you respond positively, we will submit the full-length manuscript within a short period of time given its relevance and potential to co-publish with the original replication project of the Institute for Replication. While we envision this as a _Comment_, we are open to adjusting the manuscript type according to your editorial recommendation. Should you feel that our piece would benefit from more diverse opinions from other replication teams, we would also be more than happy to follow your guidance and collect additional feedback from other replication teams as well as to onboard further co-authors to provide a more comprehensive view.
+
+\vspace{0.25cm}
+
+Regards, \linebreak
+Hauke, Michael, Stefan, Nicolas, Claire, and Felix
+
+\vspace{0.5cm}
+
+# References

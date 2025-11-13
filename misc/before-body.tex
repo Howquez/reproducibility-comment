@@ -1,0 +1,29 @@
+$if(has-frontmatter)$
+\frontmatter
+$endif$
+
+$if(title)$
+\makeatletter
+\twocolumn[
+\maketitle
+\begin{@twocolumnfalse}
+
+\begin{abstract}
+% Write your abstract here ----------------------------------------------------
+
+\vspace{1em}
+
+\normalsize \noindent Standfirst (in lieu of an abstract) goes here (up to 360 characters, including spaces). %While behavioral and social sciences have made progress addressing credibility challenges, computational reproducibility—the ability to verify results using original data and code—remains inadequately addressed. In this comment, we draw on our experience as both reproducers and authors to propose a "computational empathy" mindset with four key practices: comprehensive documentation, literate programming, structured organization, and environment management. These practices require minimal technical knowledge yet considerably improve reproducibility, allowing researchers to make their contributions more credible, transparent, and cumulative.
+
+
+
+% abstract completed  ----------------------------------------------------------
+\end{abstract}
+
+\vspace{3em}
+
+
+\end{@twocolumnfalse}
+]
+\makeatother
+$endif$
